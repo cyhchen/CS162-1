@@ -1,0 +1,38 @@
+1. What is the value of argv?
+= (char **) 0xbffff144
+
+2. What is pointed by argv?
+= 0bxffff317 "/home/user/CS162/Homework/hw0/wc"
+
+3. What is address of function main?
+= 0x80485b0
+
+4. info stack.
+0 main (argc=2, argv=0xbffff144)
+
+5. info frame.
+Stack level 0, frame at 0xbffff0b0:                                                             
+ eip = 0x8048770 in main (wc.c:52); saved eip = 0xb7e2caf3                           
+ source language c.                                                           
+ Arglist at 0xbffff0a8, args: argc=2, argv=0xbffff144                                                            
+ Locals at 0xbffff0a8, Previous frame's sp is 0xbffff0b0                                                           
+ Saved registers:                                                                       
+ ebp at 0xbffff0a8, eip at 0xbffff0ac
+
+6. info registers
+eax            0x69     105                                                               │~                                                                                         
+ecx            0x804b0a0        134525088                                                 │~                                                                                         
+edx            0x69     105                                                               │~                                                                                         
+ebx            0xb7fc0000       -1208221696                                               │~                                                                                         
+esp            0xbfffec50       0xbfffec50                                                │~                                                                                         
+ebp            0xbffff0a8       0xbffff0a8                                                │~                                                                                         
+esi            0x0      0                                                                 │~                                                                                         
+edi            0x0      0                                                                 │~                                                                                         
+eip            0x8048770        0x8048770 <main+467>                                      │~                                                                                         
+eflags         0x216    [ PF AF IF ]                                                      │~                                                                                         
+cs             0x73     115                                                               │~                                                                                         
+ss             0x7b     123                                                               │~                                                                                         
+ds             0x7b     123                                                               │~                                                                                         
+es             0x7b     123                                                               │~                                                                                         
+fs             0x0      0                                                                 │~                                                                                         
+gs             0x33     51
