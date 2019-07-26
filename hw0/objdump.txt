@@ -1,0 +1,14 @@
+File Format: elf32-i386
+Architecture: i386
+
+Section this file contains:
+.init
+.plt
+.text
+.fini
+
+.text contains main function
+address: 804859d
+
+Don't see the stack segment and heap segment.
+Because I don't use the stack or heap.
