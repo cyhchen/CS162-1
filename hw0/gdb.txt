@@ -20,20 +20,19 @@ Stack level 0, frame at 0xbffff0b0:
  ebp at 0xbffff0a8, eip at 0xbffff0ac
 
 6. info registers
-eax            0x69     105 
-│~                                                                                         
-ecx            0x804b0a0        134525088                                                 │~                                                                                         
-edx            0x69     105                                                               │~                                                                                         
-ebx            0xb7fc0000       -1208221696                                               │~                                                                                         
-esp            0xbfffec50       0xbfffec50                                                │~                                                                                         
-ebp            0xbffff0a8       0xbffff0a8                                                │~                                                                                         
-esi            0x0      0                                                                 │~                                                                                         
-edi            0x0      0                                                                 │~                                                                                         
-eip            0x8048770        0x8048770 <main+467>                                      │~                                                                                         
-eflags         0x216    [ PF AF IF ]                                                      │~                                                                                         
-cs             0x73     115                                                               │~                                                                                         
-ss             0x7b     123                                                               │~                                                                                         
-ds             0x7b     123                                                               │~                                                                                         
-es             0x7b     123                                                               │~                                                                                         
-fs             0x0      0                                                                 │~                                                                                         
+eax            0x69     105 															                                                                                          
+ecx            0x804b0a0        134525088                                                                                                                                         
+edx            0x69     105                                                                                                                                                       
+ebx            0xb7fc0000       -1208221696                                                                                                                                       
+esp            0xbfffec50       0xbfffec50                                                                                                                                       
+ebp            0xbffff0a8       0xbffff0a8                                                                                                                                        
+esi            0x0      0                                                                                                                                                        
+edi            0x0      0                                                                                                                                                         
+eip            0x8048770        0x8048770 <main+467>                                                                                                                              
+eflags         0x216    [ PF AF IF ]                                                                                                                                              
+cs             0x73     115                                                                                                                                                       
+ss             0x7b     123                                                                                                                                                        
+ds             0x7b     123                                                                                                                                                       
+es             0x7b     123                                                                                                                                                       
+fs             0x0      0                                                                                                                                                   
 gs             0x33     51
