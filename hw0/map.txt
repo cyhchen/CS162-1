@@ -1,0 +1,22 @@
+1. 
+recur address is definded in .text section
+main address is definded in .text section
+static data is defined in .data section
+
+2.
+section .text: use to store code
+section .data: use to store global variable
+
+3.
+decrease.
+
+4.
+48 bytes.
+
+5.
+increase.
+
+6.
+not contiguous.
+12 bytes between two malloc.
+
