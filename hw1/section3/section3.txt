@@ -1,0 +1,26 @@
+2.1
+My pid is 8649(Once or Twice)
+
+2.2:
+a. HELPER
+   MAIN
+
+b. MAIN
+   HELPER
+
+c. MAIN
+
+2.3:
+i is 2
+
+2.4:
+I am the child
+
+2.5:
+a. Data is 1
+   Data is 2
+   Data is 1
+
+b. Data is 1
+   Data is 1
+   Data is 2
