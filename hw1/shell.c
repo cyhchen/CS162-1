@@ -27,6 +27,8 @@ struct termios shell_tmodes;
 /* Process group id for the shell */
 pid_t shell_pgid;
 
+char PATH[] = {"/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"};
+
 int cmd_exit(struct tokens *tokens);
 int cmd_help(struct tokens *tokens);
 int cmd_pwd(struct tokens *tokens);
@@ -91,6 +93,7 @@ int lookup(char cmd[]) {
   return -1;
 }
 
+
 /* Intialization procedures for this shell */
 void init_shell() {
   /* Our shell is connected to standard input. */
@@ -138,7 +141,47 @@ int main(unused int argc, unused char *argv[]) {
       cmd_table[fundex].fun(tokens);
     } else {
       /* REPLACE this to run commands as programs. */
-      fprintf(stdout, "This shell doesn't know how to run programs.\n");
+	  pid_t pid = fork();
+	  int exit;
+	  if(pid == 0) {	
+		  size_t len = tokens_get_length(tokens);
+		  char** args = (char**)malloc(len*sizeof(char*));
+		  char in_redirect[] = "<";
+		  char out_redirect[] = ">";
+
+		  
+		  for(size_t i = 0; i < len; ++i) {
+			  char* temp = tokens_get_token(tokens, i);
+
+			  if(strcmp(temp, in_redirect) == 0) {
+				  freopen(tokens_get_token(tokens, i+1), "r", stdin);
+				  break;
+			  } else if(strcmp(temp, out_redirect) == 0) {	
+				  freopen(tokens_get_token(tokens, i+1), "w", stdout);
+				  break;
+			  } else {	
+				args[i] = temp;
+			  }
+		  }
+
+		  int length = strlen(PATH);
+		  int index = 0;
+
+		  for(int i = 0; i < length; i++) {	
+			  if(PATH[i] == ':') {	
+				  char path[1024] = {'\0'};
+			  	  strncpy(path, PATH+index, i-index);
+				  index = i + 1;
+				  path[strlen(path)] = '/';
+				  strcat(path, args[0]);
+				  execv(path, args);
+			  }
+		  }
+		  fprintf(stdout, "This shell doesn't know how to run programs.\n");
+		  return -1;
+	  } else {	
+		  wait(&exit);
+	  }
     }
 
     if (shell_is_interactive)
