@@ -126,11 +126,13 @@ int main(unused int argc, unused char *argv[]) {
   static char line[4096];
   int line_num = 0;
 
+
   /* Please only print shell prompts when standard input is not a tty */
   if (shell_is_interactive)
     fprintf(stdout, "%d: ", line_num);
 
   while (fgets(line, 4096, stdin)) {
+
     /* Split our line into words. */
     struct tokens *tokens = tokenize(line);
 
@@ -143,7 +145,13 @@ int main(unused int argc, unused char *argv[]) {
       /* REPLACE this to run commands as programs. */
 	  pid_t pid = fork();
 	  int exit;
-	  if(pid == 0) {	
+	  signal(SIGTTOU, SIG_IGN);
+	  if(pid == 0) {
+		  setpgid(0, getpid());
+		  if(!tcsetpgrp(0, getpid()) == -1) {	
+			  perror("child tcsetpgrp failed\n");
+		  }
+
 		  size_t len = tokens_get_length(tokens);
 		  char** args = (char**)malloc(len*sizeof(char*));
 		  char in_redirect[] = "<";
@@ -181,6 +189,8 @@ int main(unused int argc, unused char *argv[]) {
 		  return -1;
 	  } else {	
 		  wait(&exit);
+		  if(tcsetpgrp(0, getpid()) == -1)
+			  perror("parent tcsetpgrp failed!\n");
 	  }
     }
 
